@@ -144,5 +144,6 @@ SESSION_FILE_PATH = BASE_DIR / "sessions"
 
 CSRF_TRUSTED_ORIGINS = [
     'https://*.ngrok.io',
-    'https://*.ngrok-free.app'
+    'https://*.ngrok-free.app',
+    'https://projectdeployment-production.up.railway.app'
 ]
