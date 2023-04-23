@@ -24,7 +24,7 @@ SECRET_KEY = "django-insecure-#iw3!7hqn_y%r++t3oav*j2@z3hmhthk@d9*8&i0pcg#vfk3ht
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', '.ngrok.io', '.ngrok-free.app', '.railway.app']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', '.ngrok.io', '.ngrok-free.app']
 
 # Application definition
 
@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "django_unicorn",
+    "bootstrap5",
 ]
 
 MIDDLEWARE = [
@@ -47,7 +48,6 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
-    "whitenoise.middleware.WhiteNoiseMiddleware",
 ]
 
 ROOT_URLCONF = "IT314_Project_20.urls"
@@ -129,9 +129,6 @@ USE_TZ = True
 
 STATIC_URL = "static/"
 STATIC_ROOT = os.path.join(BASE_DIR, "static")
-
-STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
-
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
@@ -142,11 +139,5 @@ SESSION_FILE_PATH = BASE_DIR / "sessions"
 
 CSRF_TRUSTED_ORIGINS = [
     'https://*.ngrok.io',
-    'https://*.ngrok-free.app',
-    'https://projectdeployment-production.up.railway.app',
-    
+    'https://*.ngrok-free.app'
 ]
-
-if DEBUG:
-    import mimetypes
-    mimetypes.add_type("application/javascript", ".js", True)

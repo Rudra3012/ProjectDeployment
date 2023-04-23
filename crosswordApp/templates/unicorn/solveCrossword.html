@@ -1,0 +1,80 @@
+<div>
+    <div class="mainDiv">
+        <div class="upperDiv">
+            <div class="upperDivLeft">
+                <div class="upperDivLeftText">
+                    Cross Word Title
+                </div>
+            </div>
+            <div class="upperDivRight">
+                <div class="upperDivRightText">Timer</div>
+                <div class="upperDivRightText">Attempt</div>
+                <div class="upperDivRightText">User</div>
+            </div>
+        </div>
+        <div id="mainVerticalLine"></div>
+        <div class="lowerDiv">
+            <div class="lowerDivLeft">
+                {% if status == "unsolved" %}
+                    <div class="lowerDivLeftHorClues">
+                        <div class="lowerDivLeftHorCluesTitle">Horizontal Clues</div>
+                        <div class="lowerDivLeftHorCluesTitleTextDiv">
+                            {% for len, key, clue in cluesHor %}
+                                <div class="cluesInputDiv">
+                                    <div class="lowerDivLeftHorCluesText">{{ forloop.counter }}.) {{ clue }} </div>
+                                    <input unicorn:models.debounce-100="HorAnswer{{ forloop.counter }}" class="cluesInput" maxlength="{{ len }}" id="AnswerInputHor{{ forloop.counter }}">
+                                </div>
+                            {% endfor %}
+                        </div>
+
+                    </div>
+                    <div class="lowerDivLeftVerClues">
+                        <div class="lowerDivLeftHorCluesTitle">Vertical Clues</div>
+                        <div class="lowerDivLeftHorCluesTitleTextDiv">
+                            {% for len, key, clue in cluesVer %}
+                                <div class="cluesInputDiv">
+                                    <div class="lowerDivLeftHorCluesText">{{ forloop.counter }}.) {{ clue }}</div>
+                                    <input unicorn:model="VerAnswer{{ forloop.counter }}" class="cluesInput" maxlength="{{ len }}">
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                {% else %}
+                    <div>
+                        Solved Correctly
+                    </div>
+                {% endif %}
+            </div>
+            <div class="lowerDivRight">
+                <div class="crosswordGrid">
+                    <table class="manualCrosswordGrid">
+                        {%  for row in current_grid %}
+                            <tr>
+                                {% for col in row %}
+                                    {%  if col == '_' %}
+                                    <td class="crosswordGridCellBlock">
+                                        <div unicorn:click="cellClicked(({{forloop.parentloop.counter0}}, {{forloop.counter0 }}))" class="gridCellDiv">
+                                            {{ col }}
+                                        </div>
+                                    </td>
+                                    {%  else %}
+                                        <td class="crosswordGridCellNorm">
+                                            <div unicorn:click="cellClicked(({{forloop.parentloop.counter0}}, {{forloop.counter0 }}))" class="gridCellDiv">
+                                                {{ col }}
+                                            </div>
+                                        </td>
+                                    {% endif %}
+                                {% endfor %}
+                            </tr>
+                        {% endfor %}
+                    </table>
+                </div>
+                <div class="submitButtonDiv">
+                    <button unicorn:click="submitClicked" class="submitButton">Submit</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</div>
