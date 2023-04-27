@@ -20,14 +20,15 @@ from crosswordApp import views
 
 urlpatterns = [
     path("login/", views.LoginPage, name="login"),
-    path("signup/",views.SignupPage, name='signup'),
+    path("signup/", views.SignupPage, name='signup'),
     path("create_crossword/", views.create_crossword, name="create_crossword"),
     path("unicorn/", include("django_unicorn.urls")),
     path("crossword_list_view/", views.crossword_list_view, name="crossword_list_view"),
     path("create_crossword_automatic/", views.create_crossword_automatic, name="create_crossword_automatic"),
     path("create_crossword_manual/", views.create_crossword_manual, name="create_crossword_manual"),
     path("creation", views.creation, name="creation"),
-    path("",views.home, name="home"),
+    path("", views.home, name="home"),
+    path("home", views.home, name="home"),
     path("logout/", views.logout, name="logout"),
     path("creatorProfile/", views.creatorProfile, name="creatorProfile"),
     path("admin", views.adminPage, name="adminPage"),
@@ -36,8 +37,19 @@ urlpatterns = [
     # path("admin/crosswordList/<int:crossword_id>/delete/", views.AdminCrosswordDelete, name="AdminCrosswordDeletePage"),
     path("admin/userList", views.AdminUserListPage, name="AdminUserListPage"),
     # path("admin/userList/<int:user_id>/", views.AdminUserListPage, name="AdminUserListPage"),
-    path("admin/modifyUserRequest/<str:username>/", views.ProcessModifyUserRequest, name="ProcessModifyUserRequest"),
+    path("admin/modifyUserRequest/<username>/", views.ProcessModifyUserRequest, name="ProcessModifyUserRequest"),
+    path("admin/deleteUserRequest/<username>/", views.DeleteModifyUserRequest, name="DeleteModifyUserRequest"),
+    path("admin/deleteCrosswordRequest/<str:crossword_id>/", views.ProcessModifyCrosswordRequest,   name="ProcessModifyCrosswordRequest"),
     path('forget_password/', views.forget_password, name='forget_password'),
     path('change-password/<token>/<email>/', views.ChangePassword, name="change_password"),
+
+    path('puzzle_of_day',views.puzzle_of_day, name='puzzle_of_day'),
+
     path('solve_crossword/<str:crossword_id>/', views.solve_crossword, name='solve_crossword'),
+    path('create_auto/', views.create_auto, name='temp'),
+    # path('/delete_user',views.delete_user, name='delete_user')
+    path('profile/<str:username>/', views.CreatorProfile, name='CreatorProfile'),
+    path('tutorial', views.tutorial, name='tutorial'),
+    path('tutorial_create_auto', views.tutorial_auto, name='tutorial'),
+    path('tutorial_create_manual', views.tutorial_manual, name='tutorial'),
 ]
