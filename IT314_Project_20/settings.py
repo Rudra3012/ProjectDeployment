@@ -24,7 +24,7 @@ SECRET_KEY = "django-insecure-#iw3!7hqn_y%r++t3oav*j2@z3hmhthk@d9*8&i0pcg#vfk3ht
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost',  '.ngrok.io', '.ngrok-free.app', 'testserver']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', '.ngrok.io', '.ngrok-free.app', "projectdeployment-production.up.railway.app"]
 
 # Application definition
 
@@ -144,7 +144,9 @@ SESSION_FILE_PATH = BASE_DIR / "sessions"
 
 CSRF_TRUSTED_ORIGINS = [
     'https://*.ngrok.io',
-    'https://*.ngrok-free.app'
+    'https://*.ngrok-free.app',
+    'https://projectdeployment-production.up.railway.app'
+
 ]
 
 
