@@ -145,7 +145,7 @@ CSRF_TRUSTED_ORIGINS = [
     'https://*.ngrok.io',
     'https://*.ngrok-free.app',
     'https://projectdeployment-production.up.railway.app',
-    'group20-crossword-managment.up.railway.app'
+    'https://group20-crossword-managment.up.railway.app',
 ]
 
 
