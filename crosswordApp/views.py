@@ -318,7 +318,7 @@ def forget_password(request):
         if reply is not None:
             token = str(uuid.uuid4())
             subject = 'Your forget password link'
-            mssg = f'Hi , click on the link to reset your password http://127.0.0.1:8000/change-password/{token}/{email}/'
+            mssg = f'Hi , click on the link to reset your password https://group20-crossword-managment.up.railway.app/{token}/{email}/'
             send_mail(email, subject, mssg)
             messages.success(request, 'An email is sent.')
             return redirect("/forget_password/")
