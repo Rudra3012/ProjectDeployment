@@ -488,7 +488,7 @@ def CreatorProfile(request, username):
     if request.method == 'POST':
         action = request.POST.get('ActionFollow')
 
-        if action=='Follow':
+        if action=='Subscribe':
             print(f'{activeUser} wants to follow {username}')
             reply = collections.find({"username":username})
             # reply = list(reply)
